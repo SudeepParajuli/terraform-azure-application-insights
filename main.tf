@@ -5,8 +5,6 @@
 # ARM_CLIENT_SECRET
 # ARM_TENANT_ID
 #
-# ARM_ACCESS_KEY
-#
 # Reference the Azure Provider documentation for more information.
 #
 # https://www.terraform.io/docs/providers/azurerm/index.html
@@ -42,8 +40,7 @@ locals {
 }
 
 module naming {
-  source  = "Azure/naming/azurerm"
-  version = "0.1.0"
+  source  = "github.com/Azure/terraform-azurerm-naming?ref=7091351"
 
   suffix = [local.project]
 }

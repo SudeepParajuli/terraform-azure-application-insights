@@ -5,8 +5,6 @@
 # ARM_CLIENT_SECRET
 # ARM_TENANT_ID
 #
-# ARM_ACCESS_KEY
-#
 # Reference the Azure Provider documentation for more information.
 #
 # https://www.terraform.io/docs/providers/azurerm/index.html
@@ -19,4 +17,18 @@ module resource_group {
   tags = var.tags
 
   region = var.region
+}
+
+module application_insights {
+  source  = "massimo1993/application-insights/azure"
+  version = "0.0.1"
+
+  info = var.info
+  tags = var.tags
+
+  resource_group = module.resource_group.name
+  region         = module.resource_group.region
+
+  application_type     = "java"
+  daily_data_cap_in_gb = 20
 }

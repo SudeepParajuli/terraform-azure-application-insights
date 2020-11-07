@@ -5,8 +5,6 @@
 # ARM_CLIENT_SECRET
 # ARM_TENANT_ID
 #
-# ARM_ACCESS_KEY
-#
 # Reference the Azure Provider documentation for more information.
 #
 # https://www.terraform.io/docs/providers/azurerm/index.html
