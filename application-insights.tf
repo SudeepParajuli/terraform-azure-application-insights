@@ -1,14 +1,12 @@
-locals {
-  env = substr(var.info.environment, 0, 1)
-
-  name   = replace(module.naming.application_insights.name, "-", "")
-  length = module.naming.application_insights.max_length - 4
-
-  prefix = substr(local.name, 0, local.length)
-}
-
 resource azurerm_application_insights application_insights {
-  name = format("%s%s%03d", local.prefix, local.env, var.info.sequence)
+  name = format("%s%s%03d",
+    substr(
+      replace(module.naming.application_insights.name, "-", ""),
+      module.naming.application_insights.max_length - 4
+    ),
+    substr(var.info.environment, 0, 1),
+    var.info.sequence
+  )
  
   resource_group_name = var.resource_group
   location            = var.region
