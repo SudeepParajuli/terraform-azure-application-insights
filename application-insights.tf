@@ -1,10 +1,10 @@
 resource azurerm_application_insights application_insights {
-  name = format("%s%s%03d",
+  name = format("%s-%s-%03d",
     substr(
-      replace(module.naming.application_insights.name, "-", ""),
-      module.naming.application_insights.max_length - 4
+      module.naming.application_insights.name, 0,
+      module.naming.application_insights.max_length - 6
     ),
-    substr(var.info.environment, 0, 1),
+    substr(local.environment, 0, 3),
     var.info.sequence
   )
  

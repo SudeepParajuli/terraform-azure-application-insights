@@ -19,18 +19,18 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 2.33.0"
+      version = "~> 2.35.0"
     }
   }
 }
 
 locals {
-  project     = title(var.info.project)
-  environment = title(var.info.environment)
+  project     = lower(var.info.project)
+  environment = lower(var.info.environment)
 
   tags = merge(
     {
-      for key, value in var.tags : key => title(value)
+      for key, value in var.tags : lower(key) => lower(value)
     },
     {
       project     = local.project
@@ -40,7 +40,7 @@ locals {
 }
 
 module naming {
-  source  = "github.com/Azure/terraform-azurerm-naming?ref=7091351"
+  source  = "github.com/Azure/terraform-azurerm-naming?ref=df6a893"
 
   suffix = [local.project]
 }
