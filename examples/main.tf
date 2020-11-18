@@ -27,7 +27,7 @@ module application_insights {
   tags = var.tags
 
   resource_group = module.resource_group.name
-  region         = module.resource_group.region
+  region         = var.region
 
   application_type     = "java"
   daily_data_cap_in_gb = 20
