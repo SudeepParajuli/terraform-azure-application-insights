@@ -19,7 +19,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 2.35.0"
+      version = "~> 2.36.0"
     }
   }
 }
@@ -40,7 +40,6 @@ locals {
 }
 
 module naming {
-  source  = "github.com/Azure/terraform-azurerm-naming?ref=df6a893"
-
+  source = "github.com/Azure/terraform-azurerm-naming?ref=df6a893"
   suffix = [local.project]
 }
