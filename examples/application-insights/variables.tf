@@ -2,7 +2,7 @@ variable info {
   type = object({
     project     = string
     environment = string
-    sequence    = string
+    sequence    = number
   })
 }
 
@@ -12,4 +12,8 @@ variable tags {
 
 variable region {
   type = string
+}
+
+variable daily_data_cap {
+  type = number
 }

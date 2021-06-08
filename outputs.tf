@@ -1,10 +1,10 @@
 output name {
-  description = "Generated name for the application insights resource."
+  description = "Generated name of the application insights."
   value       = azurerm_application_insights.application_insights.name
 }
 
 output id {
-  description = "The ID of the application insights resource."
+  description = "The ID of the application insights."
   value       =  azurerm_application_insights.application_insights.id
 }
 

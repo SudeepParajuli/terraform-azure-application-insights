@@ -1,12 +1,14 @@
+locals {
+  prefix = "appi-${local.project}"
+
+  offset = 0
+  length = 3
+
+  env = substr(local.environment, local.offset, local.length)
+}
+
 resource azurerm_application_insights application_insights {
-  name = format("%s-%s-%03d",
-    substr(
-      module.naming.application_insights.name, 0,
-      module.naming.application_insights.max_length - 6
-    ),
-    substr(local.environment, 0, 3),
-    var.info.sequence
-  )
+  name = format("%s-%s-%03d", local.prefix, local.env, var.info.sequence)
  
   resource_group_name = var.resource_group
   location            = var.region

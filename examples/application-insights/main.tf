@@ -15,24 +15,27 @@ provider azurerm {
 
 module resource_group {
   source  = "massimo1993/resource-group/azure"
-  version = "0.0.2"
+  version = "1.0.0"
 
-  info = var.info
-  tags = var.tags
-
+  info   = var.info
   region = var.region
+
+  tags = var.tags
 }
 
 module application_insights {
-  source  = "massimo1993/application-insights/azure"
-  version = "0.0.2"
+  #source  = "massimo1993/application-insights/azure"
+  #version = "1.0.0"
+
+  source = "../../"
 
   info = var.info
-  tags = var.tags
 
   resource_group = module.resource_group.name
   region         = var.region
 
-  application_type     = "java"
-  daily_data_cap_in_gb = 20
+  application_type = "java"
+  daily_data_cap   = var.daily_data_cap
+
+  tags = var.tags
 }
