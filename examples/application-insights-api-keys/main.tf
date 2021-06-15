@@ -24,16 +24,18 @@ module resource_group {
 }
 
 module application_insights {
-  source  = "massimo1993/application-insights/azure"
-  version = "1.0.0"
+  #source  = "massimo1993/application-insights/azure"
+  #version = "1.0.0"
+
+  source = "../../"
 
   info = var.info
 
   resource_group = module.resource_group.name
   region         = var.region
 
-  application_type = "java"
-  daily_data_cap   = var.daily_data_cap
+  daily_data_cap = var.daily_data_cap
+  api_keys       = var.api_keys
 
   tags = var.tags
 }

@@ -25,9 +25,10 @@ You can find an example on how to incorporate this module in your project under
 
 The examples consist of the following files:
 
-- `backend.tf:` configuration for using remote azurerm backend.
+- `backend.tf:` configuration for using azurerm backend.
 - `environments:` tfvars file for dev, qa and prod environment.
-- `main.tf:` the main file with the application insights module.
+- `main.tf:` the main file with the resource group module.
+- `outputs.tf`: the outputs exported from the module.
 - `variables.tf:` definition of expected input variables.
 
 # License

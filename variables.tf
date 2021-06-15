@@ -164,3 +164,21 @@ variable disable_ip_masking {
 
   default = false
 }
+
+variable api_keys {
+  type = list(object({
+    name        = string
+    permissions = string
+  }))
+
+  default = []
+
+  validation {
+    condition = alltrue([
+      for permissions in var.api_keys[*].permissions :
+        contains(["read", "write", "auth_sdk", "full_access"], permissions)
+    ])
+
+    error_message = "Invalid permissions was specified."
+  }
+}
